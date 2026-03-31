@@ -77,29 +77,8 @@
         creates: "{{ app_dir }}/main.py"
 
     - name: Create .env file with database secrets
-      copy:
-        content: |
-          {% if database_url is defined and database_url != '' %}
-          DATABASE_URL={{ database_url }}
-          {% endif %}
-          {% if mongo_uri is defined and mongo_uri != '' %}
-          MONGO_URI={{ mongo_uri }}
-          {% endif %}
-          {% if db_host is defined and db_host != '' %}
-          DB_HOST={{ db_host }}
-          {% endif %}
-          {% if db_port is defined and db_port != '' %}
-          DB_PORT={{ db_port }}
-          {% endif %}
-          {% if db_name is defined and db_name != '' %}
-          DB_NAME={{ db_name }}
-          {% endif %}
-          {% if db_user is defined and db_user != '' %}
-          DB_USER={{ db_user }}
-          {% endif %}
-          {% if db_password is defined and db_password != '' %}
-          DB_PASSWORD={{ db_password }}
-          {% endif %}
+      template:
+        src: env.j2
         dest: "{{ app_dir }}/.env"
         owner: "{{ app_user }}"
         group: "{{ app_user }}"
