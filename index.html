@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pythonapp</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0d1117;
+      color: #e6edf3;
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .badge {
+      background: linear-gradient(135deg, #238636, #2ea043);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2rem;
+    }
+
+    .card {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #1f6feb, #388bfd);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem auto;
+      font-size: 1.8rem;
+    }
+
+    .project-name {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-name span {
+      background: linear-gradient(90deg, #388bfd, #58a6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, #1f6feb, #388bfd);
+      border-radius: 2px;
+      margin: 1.2rem auto;
+    }
+
+    .repo-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background-color: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 0.85rem 1.4rem;
+      margin-top: 1.2rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .repo-section:hover {
+      border-color: #388bfd;
+    }
+
+    .repo-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .repo-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #58a6ff;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .repo-icon {
+      color: #8b949e;
+      font-size: 1rem;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .stat-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #f0f6fc;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.6rem;
+    }
+
+    .tag {
+      background-color: #1f2937;
+      border: 1px solid #30363d;
+      color: #8b949e;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 1.8rem;
+      padding: 0.75rem 2rem;
+      background: linear-gradient(135deg, #1f6feb, #388bfd);
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .cta-button:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 1rem;
+      padding: 1.2rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: #6e7681;
+      border-top: 1px solid #21262d;
+      width: 100%;
+      max-width: 640px;
+      letter-spacing: 0.03em;
+    }
+
+    footer strong {
+      color: #8b949e;
+    }
+
+    @media (max-width: 480px) {
+      .project-name {
+        font-size: 1.9rem;
+      }
+      .card {
+        padding: 2rem 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <span class="badge">&#x2022; Active Project</span>
+
+    <div class="card">
+
+      <div class="project-icon">🐍</div>
+
+      <h1 class="project-name"><span>pythonapp</span></h1>
+
+      <p style="color:#8b949e; font-size:0.92rem; margin-top:0.4rem; line-height:1.6;">
+        A modern Python application built for performance, clarity, and scale.
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="repo-section">
+        <span class="repo-icon">📦</span>
+        <span class="repo-label">Repository</span>
+        <span style="color:#30363d;">|</span>
+        <span class="repo-name">pythonappp</span>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-value">Python</span>
+          <span class="stat-label">Language</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" style="color:#2ea043;">Open</span>
+          <span class="stat-label">Status</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">v1.0</span>
+          <span class="stat-label">Version</span>
+        </div>
+      </div>
+
+      <div class="tech-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Open Source</span>
+        <span class="tag">MIT License</span>
+        <span class="tag">CLI</span>
+      </div>
+
+      <a class="cta-button" href="https://github.com/pythonappp" target="_blank" rel="noopener noreferrer">
+        View Repository →
+      </a>
+
+    </div>
+
+  </div>
+
+  <footer>
+    Developed by <strong>Royal Bengal AI</strong> &mdash; All rights reserved &copy; 2024
+  </footer>
+
+</body>
+</html>
