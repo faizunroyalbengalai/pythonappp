@@ -139,17 +139,17 @@ jobs:
             -i "${{ needs.provision.outputs.server_ip }}," \
             --private-key /tmp/deploy_key \
             -u ${{ secrets.SSH_USER || 'ubuntu' }} \
-            -e "database_url='${{ secrets.DATABASE_URL }}'" \
-            -e "mongo_uri='${{ secrets.MONGO_URI }}'" \
-            -e "db_host='${{ secrets.DB_HOST }}'" \
-            -e "db_port='${{ secrets.DB_PORT }}'" \
-            -e "db_name='${{ secrets.DB_NAME }}'" \
-            -e "db_user='${{ secrets.DB_USER }}'" \
-            -e "db_password='${{ secrets.DB_PASSWORD }}'" \
-            -e "install_db='${{ secrets.INSTALL_DB_ON_EC2 }}'" \
-            -e "db_type='${{ secrets.DB_TYPE }}'" \
-            -e "db_username='${{ secrets.DB_USERNAME }}'" \
-            -e "db_password_plain='${{ secrets.DB_PASSWORD }}'" \
+            -e "database_url=${{ secrets.DATABASE_URL }}" \
+            -e "mongo_uri=${{ secrets.MONGO_URI }}" \
+            -e "db_host=${{ secrets.DB_HOST }}" \
+            -e "db_port=${{ secrets.DB_PORT }}" \
+            -e "db_name=${{ secrets.DB_NAME }}" \
+            -e "db_user=${{ secrets.DB_USER }}" \
+            -e "db_password=${{ secrets.DB_PASSWORD }}" \
+            -e "install_db=${{ secrets.INSTALL_DB_ON_EC2 }}" \
+            -e "db_type=${{ secrets.DB_TYPE }}" \
+            -e "db_username=${{ secrets.DB_USERNAME }}" \
+            -e "db_password_plain=${{ secrets.DB_PASSWORD }}" \
             playbook.yml
         working-directory: ansible
         env:
